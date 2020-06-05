@@ -30,6 +30,6 @@ public class StringInfo implements IMedaModText {
 	}
 
 	public int getDrawOrder() {
-		return 0;
+		return Integer.parseInt(Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.locations.headLine"));
 	}
 }

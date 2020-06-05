@@ -37,7 +37,7 @@ public class Coordinates implements IMedaModText {
 
 	@Override
 	public int getDrawOrder() {
-		return 1;
+		return Integer.parseInt(Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.locations.xyz"));
 	}
 
 }

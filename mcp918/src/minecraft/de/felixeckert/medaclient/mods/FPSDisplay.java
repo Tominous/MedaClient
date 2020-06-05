@@ -31,7 +31,7 @@ public class FPSDisplay implements IMedaModText {
 
 	@Override
 	public int getDrawOrder() {
-		return 2;
+		return Integer.parseInt(Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.locations.fps"));
 	}
 
 }

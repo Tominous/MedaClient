@@ -37,7 +37,7 @@ public class PingDisplay implements IMedaModText {
 
 	@Override
 	public int getDrawOrder() {
-		return 3;
+		return Integer.parseInt(Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.locations.ping"));
 	}
 
 }

@@ -1,0 +1,21 @@
+mcp918/*.bat
+mcp918/*sh
+mcp918/bin
+mcp918/eclipse
+mcp918/docs
+mcp918/jars
+mcp918/lib
+mcp918/logs
+mcp918/runtime
+mcp918/reobf
+mcp918/conf
+mcp918/CHANGELOG
+mcp918/temp
+
+mcp918/src/minecraft/optfine
+mcp918/src/minecraft/assets
+mcp918/src/minecraft/net
+mcp918/src/minecraft/optifine
+mcp918/src/minecraft/Start.java
+MedaClient Old.rar
+mcp918/LICENSE.txt

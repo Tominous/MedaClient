@@ -1,5 +1,7 @@
 package de.felixeckert.medaclient.mods;
 
+import java.util.Iterator;
+
 import de.felixeckert.medaclient.MedaClient.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -10,9 +12,7 @@ public class StringInfo implements IMedaModText {
 	
 	public StringInfo () {}
 	
-	public void update() {
-		
-	}
+	public void update() {}
 	
 	public void render(int orderInRenderering) {
 		FontRenderer fr = Minecraft.getMinecraft().fontRendererObj;
@@ -20,7 +20,7 @@ public class StringInfo implements IMedaModText {
 		GlStateManager.pushMatrix();
 		GlStateManager.scale(scaleInt[0], scaleInt[1], scaleInt[2]);
 		fr.drawString(Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.headLine.color")+
-				"MedaClient "+Reference.version + " ["+Reference.stage.toUpperCase()+"] ", 
+				"MedaClient "+Reference.version + " ["+Reference.stage.toUpperCase()+"] Build "+Reference.build, 
 				1, 1+(fr.FONT_HEIGHT*orderInRenderering), -1);
 		GlStateManager.popMatrix();
 	}
@@ -30,6 +30,9 @@ public class StringInfo implements IMedaModText {
 	}
 
 	public int getDrawOrder() {
-		return Integer.parseInt(Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.locations.headLine"));
+		String oderString = Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.locations.headLine.order");
+		return Integer.parseInt(oderString);
 	}
+
+	public String getName() { return "headLine"; }
 }

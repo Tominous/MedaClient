@@ -20,10 +20,8 @@ public class PingDisplay implements IMedaModText {
 		FontRenderer fr = Minecraft.getMinecraft().fontRendererObj;
 		int ping = 0;
 		
-		//if (!Minecraft.getMinecraft().isSingleplayer()) {
-			NetworkPlayerInfo npi = Minecraft.getMinecraft().getNetHandler().getPlayerInfo(Minecraft.getMinecraft().thePlayer.getGameProfile().getId());
-			//ping = npi.func_178835_l();
-		//}
+		NetworkPlayerInfo npi = Minecraft.getMinecraft().getNetHandler().getPlayerInfo(Minecraft.getMinecraft().thePlayer.getGameProfile().getId());
+		ping = npi.getResponseTime();
 		GlStateManager.pushMatrix();
 		GlStateManager.scale(scaleInt[0], scaleInt[1], scaleInt[2]);
 		fr.drawString(colors[0]+"Ping: "+colors[1]+ping, 1, 1+(fr.FONT_HEIGHT*orderInRenderering), -1);
@@ -37,7 +35,9 @@ public class PingDisplay implements IMedaModText {
 
 	@Override
 	public int getDrawOrder() {
-		return Integer.parseInt(Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.locations.ping"));
+		String oderString = Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.locations.headLine.order");
+		return Integer.parseInt(oderString);
 	}
-
+	
+	public String getName() { return "ping"; }
 }

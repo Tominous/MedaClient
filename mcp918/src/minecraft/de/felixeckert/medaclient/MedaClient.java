@@ -14,10 +14,13 @@ import de.felixeckert.medaclient.mods.Coordinates;
 import de.felixeckert.medaclient.mods.FPSDisplay;
 import de.felixeckert.medaclient.mods.ModRegistry;
 import de.felixeckert.medaclient.mods.PingDisplay;
+import de.felixeckert.medaclient.mods.SprintToggle;
 import de.felixeckert.medaclient.mods.StringInfo;
 import de.felixeckert.medaclient.utils.FileUtils;
 import de.felixeckert.medaclient.utils.MedaLogger;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.DefaultResourcePack;
+import net.minecraft.util.ResourceLocation;
 
 // Meda Client Main Class
 
@@ -29,8 +32,11 @@ public class MedaClient {
 	public static void init() {
 		logger = (new MedaLogger()).getLogger("Meda");
 		logger.info("Initializing MedaClient");
+		logger.info(DefaultResourcePack.class.getResource(("/" + (new ResourceLocation("pack.png")).getResourcePath())).getPath());
 		
 		logger.info("Version "+Reference.version + " build " + Reference.build + " " + Reference.stage + " stage ;");
+		
+		// Konfiguration Laden
 		logger.info("Loading Config...");
 		try {
 			config = FileUtils.readPropertiesFile(Minecraft.getMinecraft().mcDataDir.getAbsolutePath()+"/medaconfig.properties");
@@ -46,9 +52,14 @@ public class MedaClient {
 		modReg.addMod("FPS", new FPSDisplay());
 		modReg.addMod("Ping", new PingDisplay());
 		modReg.addMod("Coordinates", new Coordinates());
+		modReg.addMod("Sprint", new SprintToggle());
 		logger.info("Finished mod Registration");
 		logger.info("Meda Client Initialized");
+		
+		postInit();
 	}
+	
+	public static void postInit() {}
 
 	public void update() {
 		// Update all mods (Also renders them if they're graphical)
@@ -65,7 +76,7 @@ public class MedaClient {
 		// Version Vars
 		public static final String version   = "0.2";
 		public static final String stage     = "beta";
-		public static final String build     = "2";
+		public static final String build     = "23";
 		public static final String mcVersion = "1.8.8";
 		
 		// Info Vars

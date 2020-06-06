@@ -18,10 +18,12 @@ public class ModRegistry {
 	
 	public void updateMods() {
 		for (IMedaMod mod : mods.values()) {
-			mod.update();
-			if (mod instanceof IMedaModText) {
-				if (((IMedaModText) mod).setsOwnDrawOrder()) {
-					mod.render(((IMedaModText) mod).getDrawOrder());
+			if (Minecraft.getMinecraft().getClient().getConfig().getProperty("mods."+mod.getName()+".active").matches("true")) {
+				mod.update();
+				if (mod instanceof IMedaModText) {
+					if (((IMedaModText) mod).setsOwnDrawOrder()) {
+						mod.render(((IMedaModText) mod).getDrawOrder());
+					}
 				}
 			}
 		}

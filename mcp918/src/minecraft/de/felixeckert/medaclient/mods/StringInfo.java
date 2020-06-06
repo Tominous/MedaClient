@@ -20,7 +20,7 @@ public class StringInfo implements IMedaModText {
 		GlStateManager.pushMatrix();
 		GlStateManager.scale(scaleInt[0], scaleInt[1], scaleInt[2]);
 		fr.drawString(Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.headLine.color")+
-				"MedaClient "+Reference.version + " ["+Reference.stage.toUpperCase()+"] Build "+Reference.build, 
+				"MedaClient "+Reference.version + " ["+Reference.stage.toUpperCase()+"] Build "+Reference.build+" Patch "+Reference.patch, 
 				1, 1+(fr.FONT_HEIGHT*orderInRenderering), -1);
 		GlStateManager.popMatrix();
 	}

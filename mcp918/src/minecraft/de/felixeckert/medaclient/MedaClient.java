@@ -25,16 +25,23 @@ import net.minecraft.util.ResourceLocation;
 // Meda Client Main Class
 
 public class MedaClient {
+	private static MedaClient INSTANZ;
 	private static MedaLogger logger;
 	private static ModRegistry modReg;
 	private static Properties  config;
+	
+	private static DiscordIntegration discordInt;
+	
+	public MedaClient() {
+		this.INSTANZ = this;
+	}
 	
 	public static void init() {
 		logger = (new MedaLogger()).getLogger("Meda");
 		logger.info("Initializing MedaClient");
 		logger.info(DefaultResourcePack.class.getResource(("/" + (new ResourceLocation("pack.png")).getResourcePath())).getPath());
 		
-		logger.info("Version "+Reference.version + " build " + Reference.build + " " + Reference.stage + " stage ;");
+		logger.info("Version "+Reference.version + " build " + Reference.build + " " + Reference.stage + " stage patch "+Reference.patch);
 		
 		// Konfiguration Laden
 		logger.info("Loading Config...");
@@ -44,6 +51,10 @@ public class MedaClient {
 			e.printStackTrace();
 		}	
 		logger.info("Loaded config");
+		logger.info("Initializing DiscordRPC");
+		discordInt = new DiscordIntegration();
+		discordInt.Start();
+		logger.info("Finished Initializing DiscordRPC");
 		
 		// Register all mods here
 		logger.info("Registering MedaMods");
@@ -61,6 +72,10 @@ public class MedaClient {
 	
 	public static void postInit() {}
 
+	public static void shutdown() {
+		discordInt.shutdown();
+	}
+	
 	public void update() {
 		// Update all mods (Also renders them if they're graphical)
 		modReg.updateMods();
@@ -68,15 +83,17 @@ public class MedaClient {
 	
 	// Getter Methods
 	public static MedaLogger getLogger() { return logger; }	
-	public MedaClient getMedaClient() { return this; }
+	public MedaClient getMedaClient() { return INSTANZ; }
 	public static Properties getConfig() { return config; }
+	public DiscordIntegration getDiscordInt() { return discordInt; }
 	
 	public class Reference {
 		// Reference Variables
 		// Version Vars
-		public static final String version   = "0.2";
+		public static final String version   = "0.3";
+		public static final String patch     = "1";
 		public static final String stage     = "beta";
-		public static final String build     = "23";
+		public static final String build     = "1";
 		public static final String mcVersion = "1.8.8";
 		
 		// Info Vars

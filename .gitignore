@@ -19,3 +19,7 @@ mcp918/src/minecraft/optifine
 mcp918/src/minecraft/Start.java
 MedaClient Old.rar
 mcp918/LICENSE.txt
+Installer/.classpath
+Installer/.project
+Installer/.settings/org.eclipse.jdt.core.prefs
+*.class

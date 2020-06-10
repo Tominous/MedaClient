@@ -24,6 +24,10 @@ public class ModRegistry {
 					if (((IMedaModText) mod).setsOwnDrawOrder()) {
 						mod.render(((IMedaModText) mod).getDrawOrder());
 					}
+				} else if (mod instanceof IMedaModRender) {
+					if (((IMedaModRender) mod).setsOwnDrawOrder()) {
+						mod.render(((IMedaModRender) mod).getDrawOrder());
+					}
 				}
 			}
 		}

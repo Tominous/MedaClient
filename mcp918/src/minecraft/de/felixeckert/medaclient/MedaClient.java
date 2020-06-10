@@ -12,8 +12,11 @@ import de.felixeckert.medaclient.mods.Coordinates;
 ////////////////////////////////
 
 import de.felixeckert.medaclient.mods.FPSDisplay;
+import de.felixeckert.medaclient.mods.IMedaMod;
+import de.felixeckert.medaclient.mods.KeyStrokes;
 import de.felixeckert.medaclient.mods.ModRegistry;
 import de.felixeckert.medaclient.mods.PingDisplay;
+import de.felixeckert.medaclient.mods.SneakToggle;
 import de.felixeckert.medaclient.mods.SprintToggle;
 import de.felixeckert.medaclient.mods.StringInfo;
 import de.felixeckert.medaclient.utils.FileUtils;
@@ -64,6 +67,8 @@ public class MedaClient {
 		modReg.addMod("Ping", new PingDisplay());
 		modReg.addMod("Coordinates", new Coordinates());
 		modReg.addMod("Sprint", new SprintToggle());
+		//modReg.addMod("Sneak", new SneakToggle());
+		modReg.addMod("Keys", new KeyStrokes());
 		logger.info("Finished mod Registration");
 		logger.info("Meda Client Initialized");
 		
@@ -90,7 +95,7 @@ public class MedaClient {
 	public class Reference {
 		// Reference Variables
 		// Version Vars
-		public static final String version   = "0.3";
+		public static final String version   = "0.4";
 		public static final String patch     = "1";
 		public static final String stage     = "beta";
 		public static final String build     = "1";

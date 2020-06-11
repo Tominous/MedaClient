@@ -17,7 +17,7 @@ public class DiscordIntegration {
 
 			@Override
 			public void apply(DiscordUser usr) {
-				Minecraft.getMinecraft().getClient().getLogger().info("Websome "+usr.username + "#"+usr.discriminator+ ".");
+				Minecraft.getMinecraft().getClient().getLogger().info("Welcome "+usr.username + "#"+usr.discriminator+ ".");
 				update("Starting...", "");
 			}
 			

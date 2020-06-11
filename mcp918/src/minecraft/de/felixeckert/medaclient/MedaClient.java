@@ -96,9 +96,9 @@ public class MedaClient {
 		// Reference Variables
 		// Version Vars
 		public static final String version   = "0.4";
-		public static final String patch     = "1";
+		public static final String patch     = "2";
 		public static final String stage     = "beta";
-		public static final String build     = "1";
+		public static final String build     = "24";
 		public static final String mcVersion = "1.8.8";
 		
 		// Info Vars

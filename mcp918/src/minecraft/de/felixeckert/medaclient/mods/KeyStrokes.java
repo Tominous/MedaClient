@@ -13,7 +13,8 @@ public class KeyStrokes implements IMedaModRender {
 	private boolean[] keys;
 	private static final float[] scaleInt = new float[] {1f, 1f, 0.5f}; // Sets how much the String should be enlarged by
 	private static final String[] colors  = new String[] {
-			Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.keys.color")
+			Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.keys.color"),
+			Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.keys.active.color")
 	};
 	private static final int space = Integer.parseInt(Minecraft.getMinecraft().getClient().getConfig().getProperty("mods.keys.space"));
 	
@@ -32,26 +33,46 @@ public class KeyStrokes implements IMedaModRender {
 		
 		if (this.keys[0]) {
 			GlStateManager.pushMatrix();
-			GlStateManager.scale(scaleInt[0], scaleInt[1], scaleInt[2]);
-			fr.drawString(colors[0]+"w", space, 1*(fr.FONT_HEIGHT*orderInRenderering), -1);
+			GlStateManager.scale(1f, 1f, 0.5f);
+			fr.drawString(colors[0]+"w", space+5, 1*(fr.FONT_HEIGHT*orderInRenderering), -1);
+			GlStateManager.popMatrix();
+		} else {
+			GlStateManager.pushMatrix();
+			GlStateManager.scale(1f, 1f, 0.5f);
+			fr.drawString(colors[1]+"w", space+5, 1*(fr.FONT_HEIGHT*orderInRenderering), -1);
 			GlStateManager.popMatrix();
 		}
 		if (this.keys[1]) {
 			GlStateManager.pushMatrix();
-			GlStateManager.scale(scaleInt[0], scaleInt[1], scaleInt[2]);
-			fr.drawString(colors[0]+"a", 1, 1*(fr.FONT_HEIGHT*orderInRenderering)+space, -1);
+			GlStateManager.scale(1f, 1f, 0.5f);
+			fr.drawString(colors[0]+"a", 5, 1*(fr.FONT_HEIGHT*orderInRenderering)+space, -1);
+			GlStateManager.popMatrix();
+		} else {
+			GlStateManager.pushMatrix();
+			GlStateManager.scale(1f, 1f, 0.5f);
+			fr.drawString(colors[1]+"a", 5, 1*(fr.FONT_HEIGHT*orderInRenderering)+space, -1);
 			GlStateManager.popMatrix();
 		}
 		if (this.keys[2]) {
 			GlStateManager.pushMatrix();
-			GlStateManager.scale(scaleInt[0], scaleInt[1], scaleInt[2]);
-			fr.drawString(colors[0]+"s", space, 1*(fr.FONT_HEIGHT*orderInRenderering)+space, -1);
+			GlStateManager.scale(1f, 1f, 0.5f);
+			fr.drawString(colors[0]+"s", space+5, 1*(fr.FONT_HEIGHT*orderInRenderering)+space, -1);
+			GlStateManager.popMatrix();
+		} else {
+			GlStateManager.pushMatrix();
+			GlStateManager.scale(1f, 1f, 0.5f);
+			fr.drawString(colors[1]+"s", space+5, 1*(fr.FONT_HEIGHT*orderInRenderering)+space, -1);
 			GlStateManager.popMatrix();
 		}
 		if (this.keys[3]) {
 			GlStateManager.pushMatrix();
-			GlStateManager.scale(scaleInt[0], scaleInt[1], scaleInt[2]);
-			fr.drawString(colors[0]+"d", space*2, 1*(fr.FONT_HEIGHT*orderInRenderering)+space, -1);
+			GlStateManager.scale(1f, 1f, 0.5f);
+			fr.drawString(colors[0]+"d", (space*2)+5, 1*(fr.FONT_HEIGHT*orderInRenderering)+space, -1);
+			GlStateManager.popMatrix();
+		} else {
+			GlStateManager.pushMatrix();
+			GlStateManager.scale(1f, 1f, 0.5f);
+			fr.drawString(colors[1]+"d", (space*2)+5, 1*(fr.FONT_HEIGHT*orderInRenderering)+space, -1);
 			GlStateManager.popMatrix();
 		}
 	}

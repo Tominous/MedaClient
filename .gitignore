@@ -17,6 +17,7 @@ mcp918/src/minecraft/assets
 mcp918/src/minecraft/net
 mcp918/src/minecraft/optifine
 mcp918/src/minecraft/Start.java
+mcp918/src/minecraft/de/felixeckert/medaclient/mods/old
 MedaClient Old.rar
 mcp918/LICENSE.txt
 Installer/.classpath

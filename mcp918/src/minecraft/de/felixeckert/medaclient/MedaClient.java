@@ -1,36 +1,29 @@
 package de.felixeckert.medaclient;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
-import de.felixeckert.medaclient.mods.Coordinates;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-////////////////////////////////
-// Meda Client by Felix Eckert//
-// Minecraft version 1.8.8	  //
-////////////////////////////////
-
-import de.felixeckert.medaclient.mods.FPSDisplay;
-import de.felixeckert.medaclient.mods.IMedaMod;
-import de.felixeckert.medaclient.mods.KeyStrokes;
-import de.felixeckert.medaclient.mods.ModRegistry;
-import de.felixeckert.medaclient.mods.PingDisplay;
-import de.felixeckert.medaclient.mods.SneakToggle;
-import de.felixeckert.medaclient.mods.SprintToggle;
-import de.felixeckert.medaclient.mods.StringInfo;
+import de.felixeckert.medaclient.events.EventManager;
+import de.felixeckert.medaclient.events.EventTarget;
+import de.felixeckert.medaclient.events.imp.ClientTickEvent;
+import de.felixeckert.medaclient.hud.HUDManager;
+import de.felixeckert.medaclient.mods.ModInstances;
 import de.felixeckert.medaclient.utils.FileUtils;
-import de.felixeckert.medaclient.utils.MedaLogger;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.DefaultResourcePack;
 import net.minecraft.util.ResourceLocation;
 
-// Meda Client Main Class
-
+/**
+ * Meda Client 0.5.0 [BETA]
+ * Copyright (c) 2020 Felix Eckert.
+ * */
 public class MedaClient {
+	private static final Logger logger = LogManager.getLogger();
 	private static MedaClient INSTANZ;
-	private static MedaLogger logger;
-	private static ModRegistry modReg;
+	private static HUDManager modReg;
 	private static Properties  config;
 	
 	private static DiscordIntegration discordInt;
@@ -39,8 +32,7 @@ public class MedaClient {
 		this.INSTANZ = this;
 	}
 	
-	public static void init() {
-		logger = (new MedaLogger()).getLogger("Meda");
+	public void init() {
 		logger.info("Initializing MedaClient");
 		logger.info(DefaultResourcePack.class.getResource(("/" + (new ResourceLocation("pack.png")).getResourcePath())).getPath());
 		
@@ -59,46 +51,47 @@ public class MedaClient {
 		discordInt.Start();
 		logger.info("Finished Initializing DiscordRPC");
 		
-		// Register all mods here
-		logger.info("Registering MedaMods");
-		modReg = new ModRegistry();
-		modReg.addMod("StringInfo", new StringInfo());
-		modReg.addMod("FPS", new FPSDisplay());
-		modReg.addMod("Ping", new PingDisplay());
-		modReg.addMod("Coordinates", new Coordinates());
-		modReg.addMod("Sprint", new SprintToggle());
-		//modReg.addMod("Sneak", new SneakToggle());
-		modReg.addMod("Keys", new KeyStrokes());
-		logger.info("Finished mod Registration");
-		logger.info("Meda Client Initialized");
+		EventManager.register(this);
 		
 		postInit();
 	}
 	
 	public static void postInit() {}
 
+	public static void start() {
+		modReg = HUDManager.getInstance();
+		ModInstances.register(modReg);
+	}
+	
 	public static void shutdown() {
 		discordInt.shutdown();
 	}
 	
 	public void update() {
 		// Update all mods (Also renders them if they're graphical)
-		modReg.updateMods();
+		//modReg.updateMods();
 	}
 	
 	// Getter Methods
-	public static MedaLogger getLogger() { return logger; }	
+	public static Logger getLogger() { return logger; }	
 	public MedaClient getMedaClient() { return INSTANZ; }
 	public static Properties getConfig() { return config; }
 	public DiscordIntegration getDiscordInt() { return discordInt; }
 	
+	@EventTarget
+	public void onTick(ClientTickEvent e) {
+		if (Minecraft.getMinecraft().gameSettings.MEDA_GUI_MOD_POS.isPressed()) {
+			modReg.openConfigScreen();
+		}
+	}
+	
 	public class Reference {
 		// Reference Variables
 		// Version Vars
-		public static final String version   = "0.4";
-		public static final String patch     = "2";
+		public static final String version   = "0.5.0";
+		public static final String patch     = "0";
 		public static final String stage     = "beta";
-		public static final String build     = "24";
+		public static final String build     = "1";
 		public static final String mcVersion = "1.8.8";
 		
 		// Info Vars

@@ -1,4 +1,4 @@
-package de.felixeckert.medaclient.hud;
+package de.felixeckert.medaclient.hud.copy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;

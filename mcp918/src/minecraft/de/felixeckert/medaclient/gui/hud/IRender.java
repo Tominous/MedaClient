@@ -1,4 +1,4 @@
-package de.felixeckert.medaclient.hud;
+package de.felixeckert.medaclient.gui.hud;
 
 public interface IRender extends IRenderConfig {
 	int getWidth();

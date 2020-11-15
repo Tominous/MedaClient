@@ -1,7 +1,8 @@
-package de.felixeckert.medaclient.mods.imp;
+package de.felixeckert.medaclient.gui.mods.imp;
 
-import de.felixeckert.medaclient.hud.ScreenPosition;
-import de.felixeckert.medaclient.mods.ModDraggable;
+import de.felixeckert.medaclient.gui.hud.ScreenPosition;
+import de.felixeckert.medaclient.gui.mods.ModDraggable;
+import de.felixeckert.medaclient.util.MedaSettings;
 
 public class ModTest extends ModDraggable {
 	private ScreenPosition pos;
@@ -37,4 +38,8 @@ public class ModTest extends ModDraggable {
 		return this.pos;
 	}
 
+	@Override
+	public boolean isEnabled() {
+		return MedaSettings.getSettings().getModEnabled(name);
+	}
 }

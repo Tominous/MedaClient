@@ -1,13 +1,15 @@
-package de.felixeckert.medaclient.hud;
+package de.felixeckert.medaclient.gui.hud;
 
 import java.util.Collection;
 import java.util.Set;
 
 import com.google.common.collect.Sets;
 
+import de.felixeckert.medaclient.MedaClient;
 import de.felixeckert.medaclient.events.EventManager;
 import de.felixeckert.medaclient.events.EventTarget;
 import de.felixeckert.medaclient.events.imp.RenderEvent;
+import de.felixeckert.medaclient.util.MedaSettings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -35,6 +37,7 @@ public class HUDManager {
 
 	public void register(IRender... renders) {
 		for (IRender render : renders) {
+			MedaClient.getLogger().info("Registered Render "+render.getClass().getName());
 			this.registeredRenderers.add(render);
 		}
 	}

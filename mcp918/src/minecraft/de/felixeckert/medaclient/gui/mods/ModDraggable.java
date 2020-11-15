@@ -1,7 +1,7 @@
-package de.felixeckert.medaclient.mods;
+package de.felixeckert.medaclient.gui.mods;
 
-import de.felixeckert.medaclient.hud.IRender;
-import de.felixeckert.medaclient.hud.ScreenPosition;
+import de.felixeckert.medaclient.gui.hud.IRender;
+import de.felixeckert.medaclient.gui.hud.ScreenPosition;
 
 public abstract class ModDraggable extends Mod implements IRender {
 	public final int getLineOffset(ScreenPosition pos, int lNum) {

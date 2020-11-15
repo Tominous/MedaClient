@@ -1,4 +1,4 @@
-package de.felixeckert.medaclient.hud;
+package de.felixeckert.medaclient.hud.copy;
 
 import java.io.IOException;
 import java.util.Collection;

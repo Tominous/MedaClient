@@ -1,4 +1,6 @@
-package de.felixeckert.medaclient.mods;
+package de.felixeckert.medaclient.gui.mods;
+
+import org.lwjgl.input.Keyboard;
 
 import de.felixeckert.medaclient.MedaClient;
 import de.felixeckert.medaclient.events.EventManager;
@@ -10,6 +12,9 @@ public class Mod {
 	protected final Minecraft mc;
 	protected final FontRenderer fr;
 	protected final MedaClient client;
+	protected String name = "";
+	
+	private boolean pressed = false, toggled = false;
 	
 	public Mod() {
 		this.mc = Minecraft.getMinecraft();
@@ -19,6 +24,9 @@ public class Mod {
 		setEnabled(isEnabled);
 	}
 
+	public void update() {
+	}
+	
 	private void setEnabled(boolean b) {
 		this.isEnabled = b;
 		

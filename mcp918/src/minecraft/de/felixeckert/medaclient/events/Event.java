@@ -11,7 +11,6 @@ public class Event {
 				try {
 					ed.target.invoke(ed.source, this);
 				} catch(Exception e) {
-					e.printStackTrace();
 				}
 			}
 		}

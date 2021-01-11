@@ -89,7 +89,7 @@ public class MedaClient {
 	
 	public void update() {
 		// Update all mods (Also renders them if they're graphical)
-		//modReg.updateMods();
+		modReg.updateMods();
 	}
 	
 	// Getter Methods

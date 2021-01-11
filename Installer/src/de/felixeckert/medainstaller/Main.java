@@ -6,10 +6,10 @@ import java.nio.file.Files;
 
 public class Main {
 	public static void main(String[] main) {
-		//MainWindow win = new MainWindow();
-		//win.setup();
+		MainWindow win = new MainWindow();
+		win.setup();
 		System.out.println("[MedaInstaller] Starte Installer");
-		System.out.println("[MedaInstaller] Prüfe nach Versionen...");
+		System.out.println("[MedaInstaller] PrÃ¼fe nach Versionen...");
 		System.out.println("[MedaInstaller] Suche nach Versions Ordner...");
 		if (new File(System.getProperty("user.dir").toString()+"/MedaClient").isDirectory()) {
 			System.out.println("[MedaInstaller] Versions Ordner Gefunden!");
@@ -30,7 +30,7 @@ public class Main {
 		File versionFolder = new File(homeDir+"/AppData/Roaming/.minecraft/versions");
 		File medaVersionFolder = new File(versionFolder.getAbsolutePath().toString()+"/MedaClient");
 		
-		System.out.println("[MedaInstaller] Prüfe nach Ordnern...");
+		System.out.println("[MedaInstaller] PrÃ¼fe nach Ordnern...");
 		if (!versionFolder.isDirectory()) {
 			System.out.println("[MedaInstaller] (error) Kein Minecraft Versions Ordner! Breche ab...");
 			System.exit(0);
@@ -43,7 +43,7 @@ public class Main {
 		boolean copyConfig = false;
 		boolean copyJson   = false;
 		
-		System.out.println("[MedaInstaller] Prüfe nach Konfigurations Datei...");
+		System.out.println("[MedaInstaller] PrÃ¼fe nach Konfigurations Datei...");
 		if (new File(homeDir+"/AppData/Roaming/.minecraft/medaconfig.properties").isFile()) {
 			System.out.println("[MedaInstaller] Konfigurations Datei vorhanden!");
 		} else {
@@ -51,9 +51,9 @@ public class Main {
 			copyConfig = true;
 		}
 		
-		System.out.println("[MedaInstaller] Prüfe nach Jar Datei...");
+		System.out.println("[MedaInstaller] PrÃ¼fe nach Jar Datei...");
 		if (new File(homeDir+"/AppData/Roaming/.minecraft/versions/MedaClient/MedaClient.jar").isFile()) {
-			System.out.println("[MedaInstaller] Jar Datei bereits vorhanden, lösche!");
+			System.out.println("[MedaInstaller] Jar Datei bereits vorhanden, lÃ¶sche!");
 			new File(homeDir+"/AppData/Roaming/.minecraft/versions/MedaClient/MedaClient.jar").delete();
 		}
 		
